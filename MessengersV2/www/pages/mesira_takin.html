@@ -1,0 +1,121 @@
+﻿
+    <script>
+        $(function () {
+            $("#header").load("header.html");
+            $("#footer").load("footer.html");
+
+            var canvas = document.querySelector(".pad");
+
+            var signaturePad = new SignaturePad(canvas, {
+                penColor: "rgb(66, 133, 244)"
+            });
+        });
+
+
+    </script>
+
+    <style>
+        .pad {
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            height: 100%;
+        }
+
+        .sigPad {
+            width: 100%;
+        }
+
+        .sigWrapper {
+            width: 100%;
+            height: 200px;
+        }
+
+        .signatureBox {
+            width: 100%;
+            height: 50%;
+        }
+
+        .BarcodeArea {
+            display: initial;
+        }
+    </style>
+
+    <body class="home">
+
+        <div class="fluid topmenu">
+            <div class="topmenuItem topIcon5red active">מסירה</div>
+            <div class="topmenuItem topIcon6">מסירה מרוכזת</div>
+        </div>
+
+        <div class="mainContent">
+
+            <div class="BarcodeFields">
+                <a id="aBarCodeArea"><div class="BarcodeArea"></div></a>
+                <form id="deliver">
+                    <div class="greyText2">* במידה והברקוד אינו קריא ניתן להקליד מספר פריט</div>
+                    <input style="text-transform:uppercase" type="text" maxlength="13" class="packageinput" name="packageNum" placeholder="הקלד מספר פריט"><br>
+                    <select id="selectOptions" class="area short" name="area"></select>
+                    <a id="refreshButton"><img class="cameraBtn4" src="images/refreshIcon.jpg" alt="" /></a><br>
+                    <div class="ItemOK">
+                        פריט <strong>AV34556</strong> תקין  <br />
+                        <a ng-click="open()"><img class="cameraBtn3" src="images/displayIcon.png" alt="" /></a>&nbsp;&nbsp;
+                        <a ng-click="onTakePicture()"><img class="cameraBtn3" src="images/cameraSmall.jpg" alt="" /></a>
+                    </div>
+                    <div mass-autocomplete>
+                        <input ng-model="dirty.value" mass-autocomplete-item="autocomplete_options" type="text" class="packageinput4" name="packageNum" placeholder="מספר מנוי"><br>
+                    </div>
+                </form>
+
+                <div class="totalScanItems">
+                    <div ng-click="onOpenSig()" class="signature"><a>חתימה</a></div>
+                </div>
+
+            </div>
+            <div ng-click="onOkPressed()" class="loginBtn"><a>סיום</a></div>
+        </div>
+
+        <!--Popup Menu  -->
+        <div id="warpPopup">
+            <div class="miyunPopup">
+                <div class="shiyuchPopupInner">
+                    <div ng-click="onXClick()" class="closePop"><img src="images/closePopup.png" alt="" /></div>
+                    <br>
+                    <strong>פריטים שנסרקו עד כה</strong>
+                    <div id="warpList">
+                        <ul style="overflow: auto" id="deleteList" class="deleteList"></ul>
+                    </div>
+                    <div id="warpBtn">
+                        <div ng-click="onXClick()" class="loginBtn"><a>אישור</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--Signature Dialog-->
+        <div id="sigDialog" style="display:none">
+            <div class="miyunPopup">
+                <div class="shiyuchPopupInner2">
+
+                    <div ng-click="onCloseSigDialog()" class="closePop"><img src="images/closePopup.png" alt=""></div>
+                    <br>
+                    <strong>חתימה</strong>
+                    <br>
+                    <input id="firstName" type="text" class="packageinput3" name="fname" placeholder="*שם פרטי">
+                    <input id="lastName" type="text" class="packageinput3" name="lname" placeholder="*שם משפחה">
+                    <div class="sigPad" id="sigPad">
+                        <div class="signatureBox">
+                            <div class="sig sigWrapper current" style="display: block;">
+                                <button class="signatureButton">נקה</button>
+                                <div class="typed" style="display: none;"></div>
+                                <canvas class="pad" id="pad"></canvas>
+                                <input type="hidden" placeholder="יש להחתים את הלקוח כאן" name="output" id="sigOutput" class="output" value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="loginBtn" ng-click="onSaveSignarture()"><a>אישור</a></div>
+
+                </div>
+            </div>
+        </div>

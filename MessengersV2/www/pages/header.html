@@ -1,0 +1,89 @@
+<script>
+    $(document).ready(function () {
+        $("#liver").text(XMLMETHOD);
+        var FNAME = localStorage.getItem("FNAME");
+        var LNAME = localStorage.getItem("LNAME");
+        $("#liname").text(FNAME + " " + LNAME);
+
+
+        $('#simple-menu').sidr();
+
+      
+
+        $('.menu1').click(function () {
+            navigator.app.exitApp();
+        })
+
+
+        $('.menu5').click(function () {
+            $.sidr('close');
+            location.href = "#/collect";
+        });
+
+        $('.menu2').click(function () {
+            $.sidr('close');
+            location.href = "#/distribution";
+        });
+
+        $('.menu4').click(function () {
+            $.sidr('close');
+            location.href = "#/mesira_bdika";
+        });
+        $('.menu3').click(function () {
+            $.sidr('close');
+            location.href = "#/weightNormal/isYazum/1";
+        });
+
+        $('.menu6').click(function () {
+            $.sidr('close');
+            location.href = "#/optics_mesira_hanut";
+        });
+
+
+        $('.menu7').click(function () {
+            $.sidr('close');
+            $($('.footer ul>li>img')[0]).trigger('click')
+        });
+
+        $('.menu8').click(function () {
+            $.sidr('close');
+            location.href = "#/itemsInMemory";
+        });
+        //$('.menu99').click(function () {
+        //    $.sidr('close');
+        //    location.href = "#/showOfflinePage"
+        //});
+
+
+    });
+
+</script>
+
+<div class="gridContainer clearfix"></div>
+<div class="fluid"></div>
+<header>
+    <div class="headerImage">
+        T.גרסה 1.4.0
+    </div>
+    <div class="headerRight"><span id="headerText">חלוקה</span></div>
+    <div class="menubtn" id="simple-menu"><a><img src="images/menu.png" alt="" /></a></div>
+
+    <!-- Side Menu -->
+    <div id="sidr">
+        <ul>
+            <li id="liname" class="menu-name"></li>
+            <li id="liver"></li>
+            <li class="menu8"><a>פריטים שנשמרו בזיכרון</a></li>
+            <li class="menu2"><a>רישום וחלוקה</a></li>
+            <li class="menu3"><a>בקרת משקל ומשטח</a></li>
+            <li class="menu4"><a>מסירה</a></li>
+            <li class="menu5"><a>איסוף</a></li>
+            <li class="menu6"><a>אופטיקה</a></li>
+            <li class="menu7"><a>דוח מאזן</a></li>
+            <li class="menu1"><a>התנתקות</a></li>
+            <!--<li class="menu8"><a>הגדרות</a></li>-->
+            <!--<li class="menu99"><a>השלמת תהליך offline</a></li>-->           
+        </ul>
+    </div>
+
+</header>

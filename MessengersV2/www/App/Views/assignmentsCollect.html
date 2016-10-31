@@ -1,0 +1,108 @@
+﻿<div class="fluid assign_top">
+    <ul>
+        <li class="assign_top1 assign_active1">איסוף |</li>
+        <li class="assign_top2">מסירה |</li>
+        <li class="assign_top3">כל המשימות</li>
+    </ul>
+</div>
+<div class="mainContent" style="height: 420px;float:none;">
+    <div class="assignFields">
+        <div class="assign_innerTable">
+            <div class="assign_innergreyBlock">
+                <div class="assign_innerTableRight" style="margin: 0 22px;height: 30px;line-height: 35px;">
+                    <div class="collect" id="fromHourToHour">
+                        <span ng-bind="$ctrl.assignment.new_collection_from_hour"></span> - <span ng-bind="$ctrl.assignment.new_collection_to_hour"></span>
+                    </div>
+                </div>
+                <span style="float:left; margin: 0 22px;height: 30px;line-height: 35px;" ng-if="$ctrl.assignment.new_subjectlevel2id!=''" ng-bind="'סוג פנייה: '+ $ctrl.assignment.new_subjectlevel2id"></span>
+                <!--GREY BLOCK-->
+                <div class="BarcodeFields">
+                    <span id="subscriberNum" ng-bind="'מנוי: '+$ctrl.assignment.new_contractid"></span>
+                    <span id="subscriberName" ng-bind="$ctrl.getSubscriberName($ctrl.assignment.new_contractid)"></span>
+                    <!--<div id="NewCaseNumber" ng-bind="'פניה מספר: '+$ctrl.assignment.new_case_number"></div>-->
+                    <div id="NewCaseNumber">
+                        <span ng-bind="'פנייה: '+ $ctrl.assignment.new_case_number"></span>
+                        <span style="float:left" ng-if="$ctrl.assignment.new_barkod!=''" ng-bind="'פריט: '+ $ctrl.assignment.new_barkod"></span>
+                    </div>
+                    <div class="assign_innerDetails">
+                        <div class="assign_innrtDetailsRight">
+                            <span id="city" ng-bind="$ctrl.assignment.new_cityid"></span><br>
+                            <span id="address" ng-bind="$ctrl.assignment.new_street+ ' ' + $ctrl.assignment.new_house_number"></span><br>
+                            <span id="flor" ng-bind="'קומה: ' +$ctrl.assignment.new_collect_floor"></span>
+                        </div>
+                        <div class="assign_innrtDetailsLeft">
+                            <span id="name"></span><br>
+                            <a id="phone" href="tel:"></a>
+                        </div>
+                    </div>
+                    <form id="weight_control_plate" class="form_with_radio ng-pristine ng-valid" style="width:100%">
+                        <div ng-if="$ctrl.assignment.new_comments != ''" class="comments" style="margin: 10px 0;border: 1px solid;padding: 5px;font-size: 12px;">
+                            <strong>COMMENTS :</strong>
+                            <span ng-bind="$ctrl.assignment.new_comments"></span>
+                        </div>
+                        <div ng-if="$ctrl.assignment.description != ''" class="comments" style="margin: 10px 0;border: 1px solid;padding: 5px;font-size: 12px;">
+                            <strong>תאור :</strong>
+                            <span ng-bind="$ctrl.assignment.description"></span>
+                        </div>
+                        <div ng-if="$ctrl.assignment.new_collect_remarks != ''" class="comments" style="margin: 10px 0;border: 1px solid;padding: 5px;font-size: 12px;">
+                            <strong>הערות לאיסוף :</strong>
+                            <span ng-bind="$ctrl.assignment.new_collect_remarks"></span>
+                        </div>
+                        <!--<a>
+                            <div class="BarcodeArea" ng-click="onScan()" id="deliver_startScan"></div>
+                        </a>
+                        <div class="greyText2">* במידה והברקוד אינו קריא ניתן להקליד מספר פריט</div>-->
+
+                        <barcode barcode="$ctrl.barcode" send="$ctrl.send3()" ng-if="$ctrl.select1 == '' && $ctrl.select2 ==''"></barcode>
+
+                        <div class="selectInputfield" ng-if="$ctrl.select1 == '' && $ctrl.select2 ==''">
+                            <input type="text" class="packageinput2" maxlength="13" name="packageNum" id="packageinput" ng-model="$ctrl.barcode" placeholder="הקלד מספר פריט" style="text-transform:uppercase">
+                            <a ng-click="$ctrl.send3()"><img class="cameraBtn2" src="images/AddBtn.jpg" alt=""></a>
+                            <a ng-click="$ctrl.open()"><img class="cameraBtn" src="images/greySearch.jpg" alt=""></a>
+                            <div class="assCollectCounter" ng-bind="$ctrl.arrBarcodes.length"></div>
+                        </div>
+                        <div class="selectInput" ng-if="$ctrl.arrBarcodes.length == 0">
+                            <div class="selectInputfield" ng-if="$ctrl.select2 ==''">
+                                <select class="area" name="area1" id="select1" ng-model="$ctrl.select1">
+                                    <option class="areainput" value="">דחיה לאחר אישור</option>
+                                    <option class="areainput" value="3">לא מספיק להגיע</option>
+                                    <option class="areainput" value="4">אין מקום ברכב</option>
+                                    <option class="areainput" value="5">בוטל על ידי מוקד</option>
+                                    <option class="areainput" value="6">תקוע עם הרכב</option>
+                                    <option class="areainput" value="7">אחר</option>
+                                </select>
+                            </div>
+                            <div class="selectInputfield" ng-if="$ctrl.select1 == ''">
+                                <select class="area" name="area2" id="select2" ng-model="$ctrl.select2">
+                                    <option class="areainput" value="">סיבת אי ביצוע</option>
+                                    <option class="areainput" value="2">חומר לא מוכן</option>
+                                    <option class="areainput" value="3">איש קשר לא נמצא</option>
+                                    <option class="areainput" value="4">מקום סגור</option>
+                                    <option class="areainput" value="5">מסרב למסור</option>
+                                    <option class="areainput" value="6">שונות</option>
+                                    <option class="areainput" value="7">לא ניתן ליצור קשר טלפוני</option>
+                                    <option class="areainput" value="8">כתובת שגויה</option>
+                                    <option class="areainput" value="9">לא ידוע לגבי פריט לאיסוף</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                    <div ng-click="$ctrl.send21()" class="loginBtn" ng-if="$ctrl.select1 != '' || $ctrl.select2 !='' || $ctrl.arrBarcodes.length != 0"><a>סיום</a></div>
+                </div>
+                <!--/GREY BLOCK-->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- PopUp-->
+<div class="miyunPopup" id="warpPopup" style="display: none;">
+    <div class="shiyuchPopupInner">
+        <div ng-click="$ctrl.onXClick()" class="closePop"><img src="images/closePopup.png" alt=""></div>
+        <br>
+        <strong>פריטים שנסרקו עד כה</strong>
+        <ul class="deleteList" id="barcdoesList">
+            <li ng-repeat="barcode in $ctrl.arrBarcodes" ng-bind="barcode"></li>
+        </ul>
+        <div ng-click="$ctrl.onXClick()" class="loginBtn"><a>סיום</a></div>
+    </div>
+</div>

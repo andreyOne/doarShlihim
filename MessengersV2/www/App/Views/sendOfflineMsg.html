@@ -1,0 +1,22 @@
+﻿<div class="mainContent">
+    <div class="pic_box">
+        <img ng-repeat="p in $ctrl.pic" ng-src="{{p.img}}" class="in_view preview" ng-class="{'active': this.isActive}" ng-click="this.isActive = !this.isActive" ng-init="this.isActive=false" />
+    </div>
+    <div class="pic_box">
+        <img ng-src="{{$ctrl.pic[0].img}}" class="in_view copy_barcode" ng-class="{'active': this.isActive}" ng-click="this.isActive = !this.isActive" ng-init="this.isActive=false"/>
+        <input ng-model="$ctrl.barcode" style="text-transform:uppercase;margin:0;" type="text" maxlength="13" class="packageinput2" id="packageinput" placeholder="הקלד מספר פריט">
+    </div>
+   
+    <div class="pic_box">
+        <select  class="area" ng-model="$ctrl.selected">
+            <option value="-1" selected="selected">קוד מסירה/אי מסירה</option>
+            <option ng-repeat="code in $ctrl.deliveryCode" value="{{code.deliveryCode}}" ng-bind="code.deliveryDesc"></option>
+        </select>
+        <img ng-click="$ctrl.sendTo32()" src="images/refreshIcon.jpg" style="width: 43px;height: 43px; margin-right: 15px;">
+    </div>
+
+    <div mass-autocomplete class="pic_box" ng-if="$ctrl.showManui" ng-model="$ctrl.showManui">
+        <input ng-model="dirty.value" mass-autocomplete-item="autocomplete_options" type="text" class="packageinput4" name="packageNum" placeholder="מספר מנוי"><br>
+    </div>
+    <div ng-click="$ctrl.send()" ng-if="$ctrl.showSendButton" ng-model="$ctrl.showSendButton" class="loginBtn"><a>סיום</a></div>
+</div>

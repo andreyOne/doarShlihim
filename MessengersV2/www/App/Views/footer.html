@@ -1,0 +1,22 @@
+﻿<div class="fluid">
+    <div class="footer">
+        <ul>
+            <li>
+                <img src="images/maazanIcon.png" ng-click="$ctrl.getReport()" alt="" /><br>
+                דו"ח מאזן
+            </li>
+            <li>
+                <img id="assignImg" src="images/tasksIcon.png" ng-click="$ctrl.getAssigments(true)" alt="" /><br>
+                משימות
+            </li>
+            <li>
+                <a href="tel:0768870444"><img src="images/supportIcon.png" alt="" /></a><br>
+                תמיכה
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div id="popupMsg" class="mfp-hide">
+    <popup tasks="$ctrl.assignments" call-flag="$ctrl.isManualCall"></popup>
+</div>

@@ -1,0 +1,35 @@
+﻿
+<div class="fluid topmenu">
+    <div class="topmenuItem topIcon3red active">איסוף</div>
+    <div ng-click="onCollectAll()" class="topmenuItem topIcon4">איסוף מרוכז</div>
+</div>
+
+<div class="mainContent">
+
+    <div class="BarcodeFields">
+        <a ng-click="scan()"><div class="BarcodeArea"></div></a>
+        <form id="collect">
+            <input style="text-transform:uppercase" type="text" ng-model="inputVal" maxlength="13" class="packageinput" name="packageNum" placeholder="הקלד מספר פריט"><br>
+            <div class="greyText">* במידה והברקוד אינו קריא ניתן להקליד מספר פריט</div>
+        </form>
+
+    </div>
+    <div ng-click="onAddBarcode()" id="loginBtn" class="loginBtn"><a>סיום</a></div>
+</div>
+<!--Popup Menu  -->
+<div id="warpPopup">
+    <div class="miyunPopup mfp-hide">
+        <div class="shiyuchPopupInner">
+            <div ng-click="onXClick()" class="closePop"><img src="images/closePopup.png" alt="" /></div>
+            <br>
+            <strong>פריטים שנסרקו עד כה</strong>
+            <div id="warpList">
+                <ul style="overflow: auto" id="s" class="deleteList"></ul>
+            </div>
+            <div id="warpBtn">
+                <div ng-click="onXClick()" class="loginBtn"><a>סיום</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+

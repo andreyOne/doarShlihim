@@ -1,0 +1,42 @@
+﻿
+<div class="fluid topmenu">
+    <div class="topmenuItem topIcon1red active">רישום</div>
+    <div ng-click="onDisterbute()" class="topmenuItem topIcon2">חלוקה</div>
+</div>
+
+<div class="mainContent">
+
+    <div class="BarcodeFields">
+        <a ng-click="onScan()"><div class="BarcodeArea"></div></a>
+        <form id="deliver">
+            <div class="greyText2">* במידה והברקוד אינו קריא ניתן להקליד מספר פריט</div>
+            <input style="text-transform:uppercase" type="text" maxlength="13" class="packageinput2" name="packageNum" placeholder="הקלד מספר פריט">
+            <a ng-click="onAddBarCode()"><img class="cameraBtn" src="images/AddBtn.jpg" alt="" /></a>
+        </form>
+        <div class="totalScanItems">
+            <div class="totalScanItemsText">פריטים שנסרקו עד כה</div>
+            <div class="totalScanItemsIcon"><span id="barcodeCount">0</span></div>
+            <div class="totalScanItemsedit" ng-click="open()"><a>הצג</a></div>
+        </div>
+
+    </div>
+    <div ng-click="onOkPressed()" class="loginBtn"><a>סיום</a></div>
+
+</div>
+<!--Popup Menu  -->
+<div id="warpPopup">
+    <div class="miyunPopup">
+        <div class="shiyuchPopupInner">
+            <div ng-click="onXClick()" class="closePop"><img src="images/closePopup.png" alt="" /></div>
+            <br>
+            <strong>פריטים שנסרקו עד כה</strong>
+            <div id="warpList">
+                <ul style="overflow: auto" id="deleteList" class="deleteList"></ul>
+            </div>
+            <div id="warpBtn">
+                <div ng-click="onXClick()" class="loginBtn"><a>אישור</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,33 @@
+﻿<div class="fluid assign_top">
+    <ul>
+        <li class="assign_top1">איסוף |</li>
+        <li class="assign_top2">מסירה |</li>
+        <li class="assign_top3 assign_active3">כל המשימות</li>
+    </ul>
+    <div class="legend"><img src="images/assignLegend.jpg" alt=""></div>
+</div>
+<div class="mainContent ng-scope" style="height: 376px;">
+    <div class="assignFields">
+        <div class="assign_innerTable" id="tasksList">
+            <ul style="margin: 0;padding: 0;">
+                <li ng-repeat="assignment in $ctrl.takenAssignments">
+                    <div class="assign_innerTableRight">
+                        <div class="collect all-assignments" ng-class="$ctrl.getColor(assignment.new_collection_from_hour,assignment.new_collection_to_hour)" ng-if="assignment.Type != 2">
+                            <span ng-bind="assignment.new_collection_from_hour"></span> - <span ng-bind="assignment.new_collection_to_hour"></span>
+                        </div>
+                        <div class="deliver" ng-class="$ctrl.getColor(assignment.new_delivery_from_hour,assignment.new_delivery_until_hour)" ng-if="assignment.Type == 2">
+                            <span ng-bind="assignment.new_delivery_from_hour"></span> - <span ng-bind="assignment.new_delivery_until_hour"></span>
+                        </div>
+                    </div>
+                    <div class="assign_innrtTableLeft">
+                        <strong ng-bind="assignment.new_cityid"></strong><br>
+                        <span ng-bind="assignment.new_street + ' ' + assignment.new_house_number"></span>
+                    </div>
+                    <div class="assign_innerTableLeft2" ng-click="$ctrl.toAssignment(assignment)">
+                            <img src="images/assignAdd.jpg" alt="">
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

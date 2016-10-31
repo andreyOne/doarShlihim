@@ -1,0 +1,5 @@
+﻿<div class="pic_box">
+    <span class="pic_box_text" ng-bind="$ctrl.element.PhotoRequestDesc"></span>
+    <img ng-src="{{$ctrl.picture}}" ng-model="$ctrl.picture" ng-class="{'active': $ctrl.isActive}" ng-click="$ctrl.zoomImage()"/>
+    <take-picture add="$ctrl.addPic(img)"></take-picture>
+</div>

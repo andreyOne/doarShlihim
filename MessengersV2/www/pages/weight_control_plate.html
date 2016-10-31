@@ -1,0 +1,21 @@
+﻿
+
+        <div class="mainContent">
+
+            <div class="BarcodeFields">
+                <form id="weight_control_plate" class="form_with_radio">
+                    <br>
+                    <a><div ng-click="onScan()" class="BarcodeArea"></div></a>
+                    <input type="text" class="packageinput" maxlength="13" style="text-transform: uppercase;" name="packageNum" placeholder="הקלד מספר פריט"><br>
+                    <div class="greyText">* במידה והברקוד אינו קריא ניתן להקליד מספר פריט</div>
+
+                    <div class="radioBtn">
+                        <input ng-model="value" id="radio1" type="radio" name="radio" value="1"><label for="radio1"><span><span></span></span>רגיל</label>
+                    </div>
+                    <div class="radioBtn">
+                        <input id="radio2" type="radio" name="radio" value="2" checked="checked"><label for="radio2"><span><span></span></span>משטח</label>
+                    </div>
+                </form>
+            </div>
+            <div class="loginBtn" ng-click="onOk()"><a>סיום</a></div>
+        </div>

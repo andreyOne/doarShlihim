@@ -1,0 +1,7 @@
+﻿
+<div class="display-memory-status">מסרים בזיכרון : <span ng-bind="$ctrl.itemLength"></span> ,מצב הזיכרון :  <span ng-bind="$ctrl.memory"></span></div>
+<div class="item_box" ng-repeat="item in $ctrl.items">
+    <span ng-bind="item"></span>
+</div>
+
+<div ng-if="$ctrl.itemLength == 0" class="assign_empty"></div>

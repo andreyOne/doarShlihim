@@ -1,0 +1,11 @@
+{
+     "android": {
+         "release": {
+          "keystore": "doar-key.keystore",
+          "storePassword": "12345678",
+             "alias": "doar",
+             "password" : "12345678",
+             "keystoreType": ""
+         }
+     }
+ }

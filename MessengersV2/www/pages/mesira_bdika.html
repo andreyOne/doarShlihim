@@ -1,0 +1,21 @@
+﻿
+        <div class="fluid topmenu">
+            <div class="topmenuItem topIcon5red active">מסירה</div>
+            <div ng-click="onDeliverJoined()" class="topmenuItem topIcon6">מסירה מרוכזת</div>
+        </div>
+
+        <div class="mainContent">
+
+            <div class="BarcodeFields">
+                <a ng-click="onScan()"><div class="BarcodeArea"></div></a>
+                <form id="deliver">
+                    <div class="greyText2">* במידה והברקוד אינו קריא ניתן להקליד מספר פריט</div>
+                    <input  style="text-transform:uppercase" type="text" maxlength="13" class="packageinput" name="packageNum" placeholder="הקלד מספר פריט"><br>
+                    <select class="area short" name="area" id="mesiraSelect"></select>
+                    <a ng-click="onCheckBarCode()"><img class="cameraBtn4" src="images/refreshIcon.jpg" alt="" /></a><br>
+                </form>
+
+
+            </div>
+            <div class="loading2"><img src="images/load.gif" alt="" /></div>
+        </div>

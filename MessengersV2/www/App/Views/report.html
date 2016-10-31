@@ -1,0 +1,29 @@
+﻿<div class="mainContent" style="height: 420px;">
+    <div class="reportList">
+        <h2><strong>תאריך הדו"ח - </strong><span id="reportDate" ng-bind="$ctrl.displayToday()"></span></h2>
+        <ul>
+            <li><a><span ng-click="$ctrl.showPopup($ctrl.collectItems,'פריטים שעברו איסוף עד כה')"><img src="images/searchBtn2.jpg" alt=""></span></a><span id="haluka" ng-bind="$ctrl.collectItems.length || 0">0</span>פריטים שעברו איסוף</li>
+            <li><a><span ng-click="$ctrl.showPopup($ctrl.halukaItems,'פריטים שעברו חלוקה עד כה')"><img src="images/searchBtn2.jpg" alt=""></span></a><span id="haluka" ng-bind="$ctrl.halukaItems.length || 0">0</span>פריטים שעברו חלוקה</li>
+            <li><a><span ng-click="$ctrl.showPopup($ctrl.deliveryItems,'פריטים שעברו מסירה עד כה')"><img src="images/searchBtn2.jpg" alt=""></span></a><span id="mesira" ng-bind="$ctrl.deliveryItems.length || 0">0</span>פריטים שעברו מסירה</li>
+            <li><a><span ng-click="$ctrl.showPopup($ctrl.deliveryNotItems,'פריטים עם קוד אי מסירה עד כה')"><img src="images/searchBtn2.jpg" alt=""></span></a><span id="noMesira" ng-bind="$ctrl.deliveryNotItems.length || 0">0</span>פריטים עם קוד אי מסירה</li>
+            <li><a><span ng-click="$ctrl.showPopup($ctrl.unbalancedItems,'פריטים לא מאוזנים')"><img src="images/searchBtn2.jpg" alt=""></span></a><span id="noMesira" ng-bind="$ctrl.unbalancedItems.length || 0">0</span>פריטים לא מאוזנים</li>
+        </ul>
+        <div class="resultsTitleOk" ng-if="$ctrl.unbalancedItems.length == 0">הדו"ח מאוזן</div>
+        <div class="resultsTitleNotOk" ng-if="$ctrl.unbalancedItems.length != 0">הדו"ח אינו מאוזן</div>
+    </div>
+</div>
+
+<div class="miyunPopup" ng-show="$ctrl.isShowPopup">
+    <div class="shiyuchPopupInner">
+
+        <div ng-click="$ctrl.isShowPopup = false" class="closePop"><img src="images/closePopup.png" alt=""></div>
+        <br>
+        <strong ng-bind="$ctrl.popupTitle"></strong>
+        <ul class="deleteList" id="barcdoesListHaluka">
+            <li ng-repeat="item in $ctrl.currentItems" ng-bind="item.BC"></li>
+        </ul>
+
+        <div ng-click="$ctrl.isShowPopup = false" class="loginBtn"><a>סיום</a></div>
+
+    </div>
+</div>

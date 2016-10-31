@@ -1,0 +1,47 @@
+﻿<div class="gridContainer clearfix">
+
+    <div class="fluid">
+
+        <div class="fluid"><div class="loginLogo"><img src="images/LogoRed.jpg" alt="" /></div></div>
+        <div class="fluid">
+            <div class="loginFields">
+                <input type="number" class="userinput" id="username" name="username" placeholder="שם משתמש:">
+                <input type="number" class="passinput" style="-webkit-text-security: disc;" id="password" name="password" placeholder="סיסמא:">
+                <div class="loadDiv">
+                    <!--<div class="loading"><img src="images/load.gif" alt="" /> </div>-->
+                </div>
+                <div class="loginLinks">
+                    <div class="loginLinksLeft"><a href="tel:0768870444">תמיכה</a></div>
+                    <div class="loginLinksRight"><a href="#/resetPass">החלף סיסמה</a></div>
+                </div>
+                <div class="loginBtn"><a ng-click='login()'>כניסה</a></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div style="text-align: center;"><span>גרסה {{appVersion}}</span></div>
+
+<!-- unbalance popup-->
+<div class="miyunPopup" id="lockPopup">
+    <div class="shiyuchPopupInner3">
+        <div class="loginpopTitle">הדו"ח אינו מאוזן</div>
+        <strong>תאריך הדו"ח: </strong><span id="reportDate"></span><br>
+        <span class="red"><span id="unBalancedCounter"><strong></strong></span></span> פריטים לא מאוזנים
+        <div ng-click="showUnBalancedPopup()" class="totalScanItemsedit"><a>הצג</a></div>
+        <input type="text" class="packageinput3" name="fname" id="releaseCode" placeholder="הכנס קוד נעילה">
+        <div ng-click="releaseLock()" class="loginBtn"><a>שחרר</a></div>
+    </div>
+</div>
+<!-- un-balanced items PopUp-->
+<div class="miyunPopup" id="UnBalancedPopup">
+    <div class="shiyuchPopupInner">
+        <div ng-click="hideUnBalancedPopup()" class="closePop"><img src="images/closePopup.png" alt="" /></div>
+        <br>
+        <strong>פריטים לא מאוזנים</strong>
+        <ul class="deleteList" id="barcdoesListUnBalanced"></ul>
+        <div ng-click="reportUnbalanced()" class="loginBtn"><a>סיום</a></div>
+    </div>
+</div>
+

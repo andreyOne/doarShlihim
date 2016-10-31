@@ -1,0 +1,93 @@
+﻿
+<div class="fluid assign_top">
+    <ul>
+        <li class="assign_top1 assign_active1">איסוף |</li>
+        <li class="assign_top2">מסירה |</li>
+        <li class="assign_top3">כל המשימות</li>
+    </ul>
+</div>
+<div class="mainContent">
+    <div class="assignFields">
+        <div class="assign_topTable">
+            <div class="assign_topTableRight"><span>שעה</span></div>
+            <div class="assign_topTableLeft">כתובת</div>
+        </div>
+        <div class="assign_innerTable">
+            <li>
+                <div class="assign_innerTableRight"><div class="collect" id="fromHourToHour"></div></div>
+                <!--<div class="assign_innerTableLeft2"><a><img src="images/closeRow.png" alt=""/></a></div> -->
+                <div class="assign_innergreyBlock">
+                    <!--GREY BLOCK-->
+                    <div class="BarcodeFields">
+                        <span id="subscriberNum">
+                            <strong></strong>
+                        </span><span id="subscriberName"></span><div id="NewCaseNumber"></div>
+                        <div class="assign_innerDetails">
+                            <div class="assign_innrtDetailsRight"><span id="city"><strong></strong></span><br><span id="address"></span></div>
+                            <div class="assign_innrtDetailsLeft"><span id="name"><strong></strong></span><br><a id="phone"></a></div>
+                        </div>
+                        <form id="weight_control_plate" class="form_with_radio" style="width:100%">
+                            <div class="comments" style="margin: 10px 0;border: 1px solid;padding: 5px;font-size: 12px;">
+                                <span></span>
+                            </div>
+                            <a>
+                                <div class="BarcodeArea" ng-click="onScan()" id="deliver_startScan"></div>
+                            </a>
+                            <div class="greyText2">* במידה והברקוד אינו קריא ניתן להקליד מספר פריט</div>
+                            <div class="selectInputfield">
+                                <input type="text" class="packageinput2" maxlength="13" name="packageNum" id="packageinput" placeholder="הקלד מספר פריט" style="text-transform:uppercase">
+                                <a ng-click="onPlusClick()"><img class="cameraBtn2" src="images/AddBtn.jpg" alt="" /></a>
+                                <a ng-click="open()"><img class="cameraBtn" src="images/greySearch.jpg" alt="" /></a>
+                                <div class="assCollectCounter">
+                                    0
+                                </div>
+                            </div>
+                            <div class="selectInput">
+                                <div class="selectInputfield">
+                                    <select class="area" name="area1" id="select1">
+                                        <option class="areainput" value="" disabled selected>דחיה לאחר אישור</option>
+                                        <option class="areainput" value="3">לא מספיק להגיע</option>
+                                        <option class="areainput" value="4">אין מקום ברכב</option>
+                                        <option class="areainput" value="5">בוטל על ידי מוקד</option>
+                                        <option class="areainput" value="6">תקוע עם הרכב</option>
+                                        <option class="areainput" value="7">אחר</option>
+                                    </select>
+                                </div>
+                                <div class="selectInputfield">
+                                    <select class="area" name="area2" id="select2">
+                                        <option class="areainput" value="" disabled selected>סיבת אי ביצוע</option>
+                                        <option class="areainput" value="2">חומר לא מוכן</option>
+                                        <option class="areainput" value="3">איש קשר לא נמצא</option>
+                                        <option class="areainput" value="4">מקום סגור</option>
+                                        <option class="areainput" value="5">מסרב למסור</option>
+                                        <option class="areainput" value="6">שונות</option>
+                                        <option class="areainput" value="7">לא ניתן ליצור קשר טלפוני</option>
+                                        <option class="areainput" value="8">כתובת שגויה</option>
+                                        <option class="areainput" value="9">לא ידוע לגבי פריט לאיסוף</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                        <div ng-click="onOkPressed()" class="loginBtn"><a>סיום</a></div>
+                    </div>
+                    <!--/GREY BLOCK-->
+                </div>
+            </li>
+        </div>
+    </div>
+</div>
+<!-- PopUp-->
+<div class="miyunPopup" id="warpPopup">
+    <div class="shiyuchPopupInner">
+        <div ng-click="onXClick()" class="closePop"><img src="images/closePopup.png" alt="" /></div>
+        <br>
+        <strong>פריטים שנסרקו עד כה</strong>
+        <ul class="deleteList" id="barcdoesList">
+            <!--
+              <li>AV34567</li>
+              <li>FG59007</li>
+                -->
+        </ul>
+        <div ng-click="onXClick()" class="loginBtn"><a>סיום</a></div>
+    </div>
+</div>

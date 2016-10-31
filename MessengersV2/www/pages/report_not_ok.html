@@ -1,0 +1,100 @@
+﻿
+<div class="mainContent">
+
+    <div class="reportList">
+        <h2><strong>תאריך הדו"ח - </strong><span id="reportDate">2.1.2016</span></h2>
+        <ul>
+            <li><a><span ng-click="showHaluka()"><img src="images/searchBtn2.jpg" alt="" /></span></a><span id="haluka"></span>פריטים שעברו חלוקה</li>
+            <li><a><span ng-click="showMesira()"><img src="images/searchBtn2.jpg" alt="" /></span></a><span id="mesira"></span>פריטים שעברו מסירה</li>
+            <li><a><span ng-click="showNoMesira()"><img src="images/searchBtn2.jpg" alt="" /></span></a><span id="noMesira"></span>פריטים עם קוד אי מסירה</li>
+            <li><a><span ng-click="showUnBalanced()"><img src="images/searchBtn2.jpg" alt="" /></span></a><span id="unbalanced"></span>פריטים לא מאוזנים</li>
+        </ul>
+        <div class="resultsTitleNotOk">הדו"ח אינו מאוזן</div>
+    </div>
+
+</div>
+
+<!-- haluka PopUp-->
+
+<div class="miyunPopup" id="halukaPopup">
+    <div class="shiyuchPopupInner">
+
+        <div ng-click="hideHaluka()" class="closePop"><img src="images/closePopup.png" alt="" /></div>
+        <br>
+        <strong>פריטים שעברו חלוקה עד כה</strong>
+        <ul class="deleteList" id="barcdoesListHaluka">
+            <!--
+              <li>AV34567</li>
+              <li>FG59007</li>
+                -->
+        </ul>
+
+        <div ng-click="hideHaluka()" class="loginBtn"><a>סיום</a></div>
+
+    </div>
+</div>
+
+<!-- mesira PopUp-->
+
+<div class="miyunPopup" id="mesiraPopup">
+    <div class="shiyuchPopupInner">
+
+        <div ng-click="hideMesira()" class="closePop"><img src="images/closePopup.png" alt="" /></div>
+        <br>
+        <strong>פריטים שעברו מסירה עד כה</strong>
+        <ul class="deleteList" id="barcdoesListMesira">
+            <!--
+              <li>AV34567</li>
+              <li>FG59007</li>
+                -->
+        </ul>
+
+        <div ng-click="hideMesira()" class="loginBtn"><a>סיום</a></div>
+
+    </div>
+</div>
+
+<!-- no mesira PopUp-->
+
+<div class="miyunPopup" id="noMesiraPopup">
+    <div class="shiyuchPopupInner">
+
+        <div ng-click="hideNoMesira()" class="closePop"><img src="images/closePopup.png" alt="" /></div>
+        <br>
+        <strong>פריטים עם קוד אי מסירה עד כה</strong>
+        <ul class="deleteList" id="barcdoesListNoMesira">
+            <!--
+            <li>AV34567</li>
+            <li>FG59007</li>
+              -->
+        </ul>
+
+        <div ng-click="hideNoMesira()" class="loginBtn"><a>סיום</a></div>
+
+    </div>
+</div>
+
+<!-- un-balanced PopUp-->
+
+<div class="miyunPopup" id="UnBalancedPopup">
+    <div class="shiyuchPopupInner">
+
+        <div ng-click="hideUnBalanced()" class="closePop"><img src="images/closePopup.png" alt="" /></div>
+        <br>
+        <strong>פריטים לא מאוזנים</strong>
+        <ul class="deleteList" id="barcdoesListUnBalanced">
+            <!--
+              <li>AV34567 <div class="PopFields"><select class="area" name="area">
+                  <option class="areainput">קוד מסירה</option>
+                  <option class="areainput">אופציה 1</option>
+                  <option class="areainput">אופציה 2</option>
+                  <option class="areainput">אופציה 3</option>
+              </select></div></li>
+            -->
+        </ul>
+
+        <div ng-click="reportUnbalanced()" class="loginBtn"><a>סיום</a></div>
+
+    </div>
+</div>
+

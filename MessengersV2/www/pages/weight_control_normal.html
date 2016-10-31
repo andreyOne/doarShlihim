@@ -1,0 +1,42 @@
+﻿
+<div class="mainContent">
+  <div class="BarcodeFields">
+    <form id="weight_control_plate"><br>
+      <a>
+      <div ng-click="onScan()" class="BarcodeArea"></div>
+      </a>
+      <input style="text-transform:uppercase" type="text" maxlength="13" class="packageinput" id="packageinput" name="packageNum" placeholder="הקלד מספר פריט">
+      <br>
+      <div class="greyText">* במידה והברקוד אינו קריא ניתן להקליד מספר פריט</div>
+    <div class="radioArea">
+        <div class="radioBtn">
+          <input ng-model="value" id="radio1" type="radio" name="radio" value="1" checked="checked">
+          <label for="radio1"><span><span></span></span>רגיל</label>
+        </div>
+        <div class="radioBtn">
+          <input ng-model="value" id="radio2" type="radio" name="radio" value="2">
+          <label for="radio2"><span><span></span></span>משטח</label>
+        </div>
+        </div>
+
+      <div class="selectInput">
+      <div class="selectInputfield">
+       <input type="text" onkeypress="return isNumber(event)" maxlength="5" class="packageinput4" name="packageNum" placeholder="משקל מקורי">
+       </div>
+       <div class="selectInputfield">
+        <select class="area" name="area">
+          <option class="areainput" value="-1">משקל מתוקן</option>
+          <option class="areainput" value="01000">0 עד 1 ק"ג </option>
+          <option class="areainput" value="15000">1 ק"ג עד 15 ק"ג</option>
+          <option class="areainput" value="25000" >15 ק"ג עד 25 ק"ג</option>
+          <option class="areainput" value="35000">25 ק"ג עד 35 ק"ג</option>
+        </select>
+      </div>
+       </div>
+         
+    </form>
+    <div class="loginBtn" ng-click="onOkPressed()"><a>סיום</a></div>
+  </div>
+
+</div>
+

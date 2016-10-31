@@ -1,0 +1,93 @@
+﻿<!doctype html>
+<!--[if lt IE 7]> <html class="ie6 oldie"> <![endif]-->
+<!--[if IE 7]>    <html class="ie7 oldie"> <![endif]-->
+<!--[if IE 8]>    <html class="ie8 oldie"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="">
+<!--<![endif]-->
+<head>
+
+    
+
+    <style>
+        .pad{
+            margin-left:auto;
+            margin-right:auto;
+            width:100%;
+            height:100%;
+        }
+ 
+        .sigPad{
+            width:100%;
+        }
+
+        .sigWrapper 
+        {
+            width:100%;
+            height:200px;
+        }
+
+        .signatureBox
+        {
+            width:100%;
+            height:50%;
+        }
+
+    </style>
+
+    <style>
+    </style>
+</head>
+<body class="home">
+    <div class="fluid topmenu">
+        <div class="topmenuItem topIcon5red active">מסירה</div>
+        <div ng-click="onDeliverJoined()" class="topmenuItem topIcon6">מסירה מרוכזת</div>
+    </div>
+
+    <div class="mainContent">
+        <div class="BarcodeFields" ng-click="onScan"><a><div class="BarcodeArea" ng-click="onScan()" id="deliver_startScan"></div></a>
+            <form id="deliver">
+                <div class="greyText2">* במידה והברקוד אינו קריא ניתן להקליד מספר פריט</div>
+                <input style="text-transform:uppercase" ng-model="inputVal" type="text" maxlength="13" class="packageinput2" name="packageNum" id="packageinput" placeholder="הקלד מספר פריט">
+                <img ng-click="onTakePicture()" class="cameraBtn" id="takePic" src="images/CameraBtn.jpg" alt="" />
+                <button ng-click="onCheckBarCode()" type="button">Check</button><br>
+                <select class="area" name="area" id="mesiraSelect">  
+                </select>
+            </form>
+            <div class="totalScanItems">
+                <div ng-click="open()" id="sigDiv" class="signature"><a>חתימה</a></div>
+            </div>
+        </div>
+        <div ng-click="onOkPressed()" class="loginBtn"><a>אישור</a></div>
+    </div>
+
+    <!-- PopUp-->
+    
+    <div id="warpPopup" style="display:none">
+        <div class="miyunPopup">
+            <div class="shiyuchPopupInner2">
+
+                <div class="closePop"><img src="images/closePopup.png" alt=""></div>
+                <br>
+                <strong>חתימה</strong>
+                <br>
+                <input type="text" class="packageinput3" name="fname" placeholder="*שם פרטי">
+                <input type="text" class="packageinput3" name="lname" placeholder="*שם משפחה">
+                <div class="sigPad" id="sigPad">
+                    <div class="signatureBox">
+                        <div class="sig sigWrapper current" style="display: block;">
+                            <button class="signatureButton">נקה</button>
+                            <div class="typed" style="display: none;"></div>
+                            <canvas class="pad" id="pad"></canvas>
+                            <input type="hidden" placeholder="יש להחתים את הלקוח כאן" name="output" id="sigOutput" class="output" value="">
+                        </div>
+                    </div>
+                </div>
+                <div class="loginBtn" ng-click="onSaveSignarture()"><a>אישור</a></div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

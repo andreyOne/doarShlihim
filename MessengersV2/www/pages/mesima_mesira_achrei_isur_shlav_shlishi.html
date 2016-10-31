@@ -1,0 +1,186 @@
+﻿
+<style>
+    .BarcodeFields {
+        height: 345px;
+        overflow: auto;
+    }
+
+    .imgLoading {
+        margin: auto;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+    }
+
+    .loading2 {
+        background: #e9e9e9;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0.8;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<style>
+    .pad {
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        height: 100%;
+    }
+
+    .sigPad {
+        width: 100%;
+    }
+
+    .sigWrapper {
+        width: 100%;
+        height: 200px;
+    }
+
+    .signatureBox {
+        width: 100%;
+        height: 50%;
+    }
+</style>
+<div class="fluid assign_top">
+    <ul>
+        <li class="assign_top1">איסוף |</li>
+        <li class="assign_top2 assign_active2">מסירה |</li>
+        <li class="assign_top3">כל המשימות</li>
+    </ul>
+</div>
+
+<div class="mainContent">
+    <div class="assignFields">
+
+        <div class="assign_topTable">
+            <div class="assign_topTableRight"><span>שעה</span></div>
+            <div class="assign_topTableLeft">כתובת</div>
+        </div>
+        <div class="assign_innerTable">
+            <li>
+                <div class="assign_innerTableRight" style="width:100%;">
+                    <div class="collect" id="fromHourToHour" style="display:inline-block;"></div>
+                    <!--<div class="returnedBarcode" style="display:inline-block;float: left;"><span></span></div>-->
+                </div>
+                <!--<div class="assign_innerTableLeft2"><a><img src="images/closeRow.png" alt="" /></a></div>-->
+                <div class="assign_innergreyBlock">
+                    <!--GREY BLOCK-->
+                    <div class="BarcodeFields">
+                        <span id="subscriberNum">
+                            <strong></strong>
+                        </span><span id="subscriberName"></span>
+                        <div class="assign_innerDetails">
+                            <div class="assign_innrtDetailsRight"><span id="city"><strong></strong></span><br><span id="address"></span></div>
+                            <div class="assign_innrtDetailsLeft"><span id="name"><strong></strong></span><br><a id="phone"></a></div>
+
+                            <form id="weight_control_plate" class="form_with_radio">
+                                <div class="comments" style="margin: 10px 0;border: 1px solid;padding: 5px;font-size: 12px;">
+                                    <span></span>
+                                </div>
+                                <a ng-click="onScan()">
+                                    <div class="BarcodeArea"></div>
+                                </a>
+                                <div class="greyText2">* במידה והברקוד אינו קריא ניתן להקליד מספר פריט</div>
+                                <div class="selectInputfield">
+                                    <input style="text-transform:uppercase" type="text" maxlength="13" class="packageinput2a" name="packageNum" placeholder="הקלד מספר פריט">
+                                    <a id="refreshBarcode" ng-click="onCompareBarcodes()"><img class="cameraBtn2" src="images/refreshIcon.png" alt="" /></a>
+                                </div>
+                                <div class="selectInput">
+
+                                    <div class="selectInputfield">
+                                        <select id="selectMesira" class="area short2" name="area"></select>
+                                        <a id="refreshMesira" ng-click="onRefreshMesira()"><img class="cameraBtn5" src="images/refreshIcon.png" alt="" /></a>
+                                    </div>
+                                    <div class="selectInputfield">
+                                        <select id="selectDehia" class="area short2" name="area">
+                                            <option value="-1" class="areainput">דחיה לאחר אישור</option>
+                                            <option value="3" class="areainput">לא מספיק להגיע</option>
+                                            <option value="4" class="areainput">אין מקום ברכב</option>
+                                            <option value="5" class="areainput">בוטל על ידי מוקד</option>
+                                            <option value="6" class="areainput">תקוע עם הרכב</option>
+                                            <option value="7" class="areainput">אחר</option>
+
+                                        </select>
+                                        <a id="refreshDehia" ng-click="onRefreshDehia()"><img class="cameraBtn5" src="images/refreshIcon.png" alt="" /></a>
+                                        <br>
+
+                                    </div>
+
+                                </div>
+
+
+
+                            </form>
+
+                            <div class="totalScanItems">
+                                <div class="signature"><a ng-click="onOpenSig()">חתימה</a></div>
+                                <div class="cameraSearchIcons" style="display: inline-block;float: left;">
+                                    <a ng-click="open()"><img class="cameraBtn3" src="images/displayIcon.png" alt="" /></a>&nbsp;&nbsp;<a ng-click="onTakePicture()"><img class="cameraBtn3" src="images/cameraSmall.jpg" alt="" /></a>
+                                </div>
+                                <div class="returnedBarcode" style="display:inline-block;float: right;margin-top: 7px;"><span></span></div>
+                            </div>
+                            <div class="loginBtn"><a ng-click="onOkPressed()">סיום</a></div>
+                        </div>
+
+                        <!--/GREY BLOCK-->
+
+                    </div>
+            </li>
+
+        </div>
+    </div>
+</div>
+
+<!--Popup Menu  -->
+<div id="warpPopup">
+    <div class="miyunPopup">
+        <div class="shiyuchPopupInner">
+            <div ng-click="onXClick()" class="closePop"><img src="images/closePopup.png" alt="" /></div>
+            <br>
+            <strong>פריטים שנסרקו עד כה</strong>
+            <div id="warpList">
+                <ul style="overflow: auto" id="deleteList" class="deleteList"></ul>
+            </div>
+            <div id="warpBtn">
+                <div ng-click="onXClick()" class="loginBtn"><a>אישור</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Signature Dialog-->
+<div id="sigDialog" style="display:none">
+    <div class="miyunPopup">
+        <div class="shiyuchPopupInner2">
+
+            <div ng-click="onCloseSigDialog()" class="closePop"><img src="images/closePopup.png" alt=""></div>
+            <br>
+            <strong>חתימה</strong>
+            <br>
+            <input id="firstName" type="text" class="packageinput3" name="fname" placeholder="*שם פרטי">
+            <input id="lastName" type="text" class="packageinput3" name="lname" placeholder="*שם משפחה">
+            <div class="sigPad" id="sigPad">
+                <div class="signatureBox">
+                    <div class="sig sigWrapper current" style="display: block;">
+                        <button class="signatureButton">נקה</button>
+                        <div class="typed" style="display: none;"></div>
+                        <canvas class="pad" id="pad"></canvas>
+                        <input type="hidden" placeholder="יש להחתים את הלקוח כאן" name="output" id="sigOutput" class="output" value="">
+                    </div>
+                </div>
+            </div>
+            <div class="loginBtn" ng-click="onSaveSignarture()"><a>אישור</a></div>
+
+        </div>
+    </div>
+</div>
+

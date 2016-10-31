@@ -1,0 +1,77 @@
+﻿<div ng-repeat="task in $ctrl.tasks" class="assignment-popup">
+    <div class="closePop" ng-click="$ctrl.removeTask(task)">
+        <img src="images/closePopup.png" alt="">
+    </div>
+    <div ng-if="task.Type == 1 || task.Type == 3" class="newItempopTitleCollect">
+        <div class="assignment-title">איסוף</div>
+        <span ng-bind="$ctrl.getSubscriberName(task.new_contractid)"></span>
+    </div>
+    <div ng-if="task.Type == 2" class="newItempopTitleCollect">
+        <div class="assignment-title delivery">מסירה</div>
+        <span ng-bind="$ctrl.getSubscriberName(task.new_contract_number)"></span>
+    </div>
+
+    <span ng-if="task.Type == 1 || task.Type == 3" ng-bind="'מנוי: '+ task.new_contractid"></span>
+    <span ng-if="task.Type == 2" ng-bind="'מנוי: '+ task.new_contract_number"></span>
+
+    <span style="float:left" ng-if="task.new_subjectlevel2id!=''" ng-bind="'סוג פנייה: '+ task.new_subjectlevel2id"></span>
+
+    <div>
+        <strong ng-if="task.Type == 1 || task.Type == 3 ">
+            <span ng-bind="task.new_collection_from_hour"></span> - <span ng-bind="task.new_collection_to_hour"></span>
+        </strong>
+        <strong ng-if="task.Type == 2">
+            <span ng-bind="task.new_delivery_from_hour"></span> - <span ng-bind="task.new_delivery_until_hour"></span>
+        </strong>
+    </div>
+    <div>
+        <span ng-bind="'פנייה: '+ task.new_case_number" ng-if="task.Type == 1 || task.Type == 3"></span>
+        <span style="float:left" ng-if="task.new_barkod!=''" ng-bind="'פריט: '+ task.new_barkod"></span>
+    </div>
+
+    <div class="assign_innerDetails" style="clear: both;">
+        <div class="assign_innrtDetailsRight assign-inn">
+            <strong ng-bind="task.new_cityid"></strong><br>
+            <span ng-bind="task.new_street"></span>
+        </div>
+        <div class="assign_innrtDetailsLeft  assign-inn" ng-if="(task.Type == 1 || task.Type == 3)">           
+            <a href="tel:{{task.new_contact_main_phone}}">
+                <strong ng-bind="task.new_contact_main_phone"></strong><br>
+            </a>
+            <div ng-bind="task.new_contact_in_address"></div>
+        </div>
+        <div class="assign_innrtDetailsLeft  assign-inn" ng-if="task.Type == 2">
+            <a href="tel:{{task.new_primary_telephone2}}">
+                <strong ng-bind="task.new_primary_telephone2"></strong><br>
+            </a>
+            <div ng-bind="task.new_address_contact"></div>
+        </div>
+    </div>
+
+    <div class="">
+        <div class="popupradioBtns">
+            <div class="radioBtn">
+                <label>
+                    <input type="radio" ng-model="$ctrl.statusChoose" value="accept" class="assignment-popup-radio">
+                    אישור
+                </label>
+            </div>
+            <div class="radioBtn">
+                <label>
+                    <input type="radio" ng-model="$ctrl.statusChoose" value="reject" class="assignment-popup-radio">
+                    דחיה
+                </label>
+            </div>
+        </div>
+        <select class="area assignment-popup-select" name="area" ng-model="$ctrl.reason" ng-disabled="$ctrl.statusChoose=='accept'">
+            <option class="areainput" value="" selected="">סיבת הדחיה</option>
+            <option class="areainput" value="1">נמצא באזור חלוקה אחר</option>
+            <option class="areainput" value="2">לא שייך לאזור שלי</option>
+            <option class="areainput" value="3">לא אצליח להגיע בזמן</option>
+            <option class="areainput" value="4">אין מקום ברכב</option>
+        </select>
+    </div>
+    <div class="loginBtn" style="display: block;position: absolute;bottom: 15px;right: 25%;height: 48px;" ng-click="$ctrl.sendAssignment(task)"><a class="popup_close_button">סיום</a></div>
+</div>
+
+

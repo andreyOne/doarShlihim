@@ -1,0 +1,22 @@
+﻿
+<div class="mainContent">
+
+<div class="BarcodeFields">
+ <form id="weight_control_item"><br>
+<a href="#"><div class="BarcodeArea"></div></a>
+
+    <input style="text-transform:uppercase" type="text" maxlength="13" class="packageinput" name="packageNum" value=""><br><br>
+
+   	  <div>משקל מקורי<br>
+		<input type="text" id="grmOrg" onkeypress="return isNumber(event)" class="halfinputLeft" ng-model="grmOrg" name="gram" maxlength="3" placeholder="גרם"><span>.</span><input type="text" onkeypress="return isNumber(event)" maxlength="2" name="kg" id="kgOrg" ng-model="kgOrg" class="halfinputRight" placeholder="ק''ג">
+      </div>
+      <div>משקל מתוקן<br>
+		<input type="text" onkeypress="return isNumber(event)" class="halfinputLeft" id="grmFixed" ng-model="grmFixed" name="gram" maxlength="3" placeholder="גרם"><span>.</span><input type="text" onkeypress="return isNumber(event)" name="kg" maxlength="2" id="kgFixed" ng-model="kgFixed" class="halfinputRight" placeholder="ק''ג">
+      </div>
+
+  </form>
+ 
+</div>
+<div class="loginBtn" ng-click="onOk()"><a >סיום</a></div>
+</div>
+
